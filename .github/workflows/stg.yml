@@ -1,0 +1,36 @@
+name: MA CORE API CI/CD
+
+on:
+  push:
+    branches: [staging]
+
+jobs:
+  deploy-staging:
+    name: Deploy To Staging Server
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Using Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Deploying To Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/ma/core/
+            git checkout staging
+            git add .
+            git commit -m "Commiting From Server"
+            git pull origin staging
+            chmod +x script-stg.sh
+            ./script-stg.sh
