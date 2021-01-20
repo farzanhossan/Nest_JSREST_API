@@ -1,31 +1,18 @@
-import { UserSubscriber } from './subscribers/user.subscriber';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './entities/user.entity';
+import { MongooseModule } from '@nestjs/mongoose';
 import { UserController } from './controllers/user.controller';
+import { User, UserSchema } from './schemas/user.schema';
 import { UserService } from './services/user.service';
-import { TransactionLogService } from './services/transactionLog.service';
-import { TransactionLogController } from './controllers/transactionLog.controller';
-import { TransactionLog } from './entities/transactionLog.entity';
-import { UserInfo } from './entities/userInfo.entity';
-import { UserInfoController } from './controllers/userInfo.controller';
-import { UserInfoService } from './services/userInfo.service';
 
-const SERVICES = [UserService, UserInfoService, TransactionLogService];
+const SERVICES = [UserService];
 
-const SUBSCRIBERS = [UserSubscriber];
+const CONTROLLERS = [UserController];
 
-const CONTROLLERS = [
-  UserController,
-  UserInfoController,
-  TransactionLogController,
-];
-
-const ENTITIES = [User, UserInfo, TransactionLog];
+const SCHEMAS = [{ name: User.name, schema: UserSchema }];
 
 @Module({
-  imports: [TypeOrmModule.forFeature(ENTITIES)],
-  providers: [...SERVICES, ...SUBSCRIBERS],
+  imports: [MongooseModule.forFeature(SCHEMAS)],
+  providers: [...SERVICES],
   controllers: [...CONTROLLERS],
   exports: [...SERVICES],
 })

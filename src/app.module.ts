@@ -1,31 +1,17 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import * as config from 'config';
 import { AuthModule } from './app/modules/auth/auth.module';
-import { UserModule } from './app/modules/user/user.module';
-import { SmsModule } from './app/modules/sms/sms.module';
-import { ContactModule } from './app/modules/contact/contact.module';
 import { UploadModule } from './app/modules/upload/upload.module';
-
+import { UserModule } from './app/modules/user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: config.DATABASE.TYPE,
-      host: config.DATABASE.HOST,
-      port: config.DATABASE.PORT,
-      username: config.DATABASE.USER,
-      password: config.DATABASE.PASSWORD,
-      database: config.DATABASE.DATABASE,
-      autoLoadEntities: true,
-      synchronize: true,
-      logging: true,
-    }),
+    MongooseModule.forRoot(
+      'mongodb+srv://root:admin123@cluster0.f42ak.mongodb.net/rest-api?retryWrites=true&w=majority',
+    ),
     AuthModule,
     UserModule,
-    SmsModule,
-    ContactModule,
-    UploadModule
+    UploadModule,
   ],
 })
 export class AppModule {}

@@ -2,8 +2,8 @@
   "PORT": 3000,
   "API": {
     "PREFIX": "api/v1",
-    "TITLE": "Message Analytica",
-    "DESC": "Message Analytica",
+    "TITLE": "Rest_Api",
+    "DESC": "Rest_Api",
     "VERSION": "1.0"
   },
   "DATABASE": {
@@ -12,7 +12,7 @@
     "HOST": "localhost",
     "USER": "ma",
     "PASSWORD": "maPassword",
-    "DATABASE": "ma"
+    "DATABASE": "test"
   },
   "JWT": {
     "SECRET": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8k3x3Wi9V3kMkYu9tjDaSRD2cBjOgp3FQU/Gndlced9WsaVNx3lgkbbS47sPpFMdQVSgmGbRqhaj9vUrD56+QOMn5HuxeAp5VMwwD$",
