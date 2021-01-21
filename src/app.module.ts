@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://root:admin123@cluster0.f42ak.mongodb.net/rest-api?retryWrites=true&w=majority',
+      'mongodb+srv://root:admin123@cluster0.f42ak.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true',
     ),
     AuthModule,
     UserModule,

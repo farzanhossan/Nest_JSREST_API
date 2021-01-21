@@ -1,18 +1,17 @@
-import { User, UserDocument } from './../schemas/user.schema';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateUserDto } from '../dtos/create/create-user.dto';
-import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import { Connection, Model } from 'mongoose';
+import { User, UserDocument } from './../schemas/user.schema';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>,
-    @InjectConnection() private connection: Connection,
+    @InjectModel('User') private userModel: Model<UserDocument>, // @InjectConnection() private connection: Connection,
   ) {}
 
   async create(data: CreateUserDto): Promise<User> {
-    const createdCat = new this.userModel(data);
-    return createdCat.save();
+    const createdUser = new this.userModel(data);
+    return createdUser.save();
   }
 
   async findAll(): Promise<User[]> {

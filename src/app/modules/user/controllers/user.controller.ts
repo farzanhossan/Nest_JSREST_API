@@ -1,4 +1,3 @@
-import { User, UserSchema } from './../schemas/user.schema';
 import {
   Body,
   Controller,
@@ -7,13 +6,13 @@ import {
   Param,
   Post,
   Put,
-  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../dtos/create/create-user.dto';
 import { UserService } from '../services/user.service';
+import { User } from './../schemas/user.schema';
 @ApiTags('User')
 @UsePipes(new ValidationPipe())
 @Controller('users')
