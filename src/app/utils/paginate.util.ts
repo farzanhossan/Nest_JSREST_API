@@ -1,5 +1,6 @@
 import { FindManyOptions } from 'typeorm';
 
+//! Paginate
 export function paginate(options: any, payload: any) {
   const page = Number(options.page) ? Number(options.page) : 1;
   const take = Number(options.take) ? Number(options.take) : 10;
@@ -12,13 +13,13 @@ export function paginate(options: any, payload: any) {
     skip,
     page,
     total: payload[1],
-    data: payload[0]
+    data: payload[0],
   };
   return data;
 }
 
+//! PaginateAll
 export function paginateAll(payload: any[]) {
-
   const data = {
     success: true,
     message: `Get Data Success`,
@@ -26,12 +27,13 @@ export function paginateAll(payload: any[]) {
     skip: false,
     page: false,
     total: payload.length,
-    data: payload
+    data: payload,
   };
 
   return data;
 }
 
+//! PaginationOptions
 export function paginationOptions(options: any): FindManyOptions {
   const page = Number(options.page) ? Number(options.page) : 1;
   const take = Number(options.take) ? Number(options.take) : 10;
@@ -39,7 +41,7 @@ export function paginationOptions(options: any): FindManyOptions {
 
   const data: FindManyOptions = {
     take,
-    skip
+    skip,
   };
 
   return data;

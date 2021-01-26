@@ -1,3 +1,4 @@
+//! GetSingleDataPlaceholder
 export function getSingleDataPlaceholder(payload: any) {
   const data = {
     message: `Get Single Data Success`,
@@ -8,6 +9,7 @@ export function getSingleDataPlaceholder(payload: any) {
   return data;
 }
 
+//! InsertDataPlaceholder
 export function insertDataPlaceholder(payload: any) {
   const data = {
     message: `Insert Data Success`,
@@ -18,6 +20,7 @@ export function insertDataPlaceholder(payload: any) {
   return data;
 }
 
+//! UpdateDataPlaceholder
 export function updateDataPlaceholder(payload: any) {
   const data = {
     message: `Update Data Success`,
@@ -28,6 +31,7 @@ export function updateDataPlaceholder(payload: any) {
   return data;
 }
 
+//! DeleteDataPlaceholder
 export function deleteDataPlaceholder(payload: any) {
   const data = {
     message: `Delete Data Success`,
@@ -38,7 +42,8 @@ export function deleteDataPlaceholder(payload: any) {
   return data;
 }
 
-export function errorPlaceholder(error: string, msg: string) {
+//! ErrorPlaceholder
+export function errorPlaceholder(msg: string, error: any) {
   const data = {
     success: false,
     error,
@@ -48,6 +53,7 @@ export function errorPlaceholder(error: string, msg: string) {
   return data;
 }
 
+//! SuccessPlaceholder
 export function successPlaceholder(msg: string, payload?: any) {
   const data = {
     success: true,
